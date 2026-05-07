@@ -25,6 +25,13 @@ const Adding = ({ token }) => {
 
     const onSubmit = async (data) => {
         try {
+            // Validate that at least one image is provided
+            const hasImage = images.some(img => img !== null);
+            if (!hasImage) {
+                alert(t('errorAddingProduct') || 'At least one image is required');
+                return;
+            }
+
             const formData = new FormData();
             formData.append("name", data.name);
             formData.append("description", data.description);
@@ -32,7 +39,10 @@ const Adding = ({ token }) => {
             formData.append("category", data.category);
             formData.append("subcategory", data.subCategory);
             formData.append("bestseller", data.bestseller);
-            formData.append("size", JSON.stringify(data.sizes));
+            // Only add size if it exists in the form data
+            if (data.sizes) {
+                formData.append("size", JSON.stringify(data.sizes));
+            }
 
             images.forEach((img, index) => {
                 if (img) {
@@ -54,7 +64,9 @@ const Adding = ({ token }) => {
             if (error.response?.status === 401) {
                 alert(t('sessionExpired'));
             } else {
-                alert(error.response?.data?.message || t('errorAddingProduct'));
+                // Show error message from backend or default message
+                const errorMsg = error.response?.data?.error || error.response?.data?.message || t('errorAddingProduct') || 'Error adding product';
+                alert(errorMsg);
             }
         }
     };
@@ -65,6 +77,7 @@ const Adding = ({ token }) => {
             {/* Image Upload Section */}
             <div className='w-full'>
                 <p className='mb-2 font-medium'>{t('uploadImages')}</p>
+                <p className='mb-3 text-sm text-gray-500'>⚠️ At least one image is required</p>
                 <div className='flex flex-wrap gap-3'>
                     {images.map((img, index) => (
                         <label key={index} htmlFor={`image${index}`} className='cursor-pointer'>

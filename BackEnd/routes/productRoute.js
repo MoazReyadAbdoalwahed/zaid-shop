@@ -4,7 +4,21 @@ import upload from "../middlewares/multer.js";
 import userAuth from "../middlewares/userAuth.js";
 const router = express.Router();
 
-router.post("/addproduct", userAuth, upload.fields([{ name: "image1", maxCount: 1 }, { name: "image2", maxCount: 1 }, { name: "image3", maxCount: 1 }, { name: "image4", maxCount: 1 }]), addproduct);
+router.post(
+    "/addproduct",
+    userAuth,
+    upload.fields([
+        { name: "image1", maxCount: 1 },
+        { name: "image2", maxCount: 1 },
+        { name: "image3", maxCount: 1 },
+        { name: "image4", maxCount: 1 }
+    ]),
+    (req, res, next) => {
+        // multer errors already happen before controller, but this ensures consistent flow
+        next();
+    },
+    addproduct
+);
 router.delete("/removeproduct", userAuth, removeproduct);
 router.get("/singleproduct", singleproduct);
 router.get("/listproducts", listproducts);

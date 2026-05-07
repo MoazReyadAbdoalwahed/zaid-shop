@@ -9,6 +9,11 @@ import cartRoute from "./routes/cartRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import authRoute from "./routes/auth.js";
 import passport from "./config/passport.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,10 +35,20 @@ app.use(cors({
     credentials: true
 }))
 
-app.use(express.json());
+// Increase payload size limit for file uploads
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(passport.initialize());
 
-cloudinaryConfig();
+// Serve static files from uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+try {
+    cloudinaryConfig();
+} catch (e) {
+    console.error('❌ Cloudinary failed to initialize:', e.message);
+    process.exit(1);
+}
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
