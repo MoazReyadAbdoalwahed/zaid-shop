@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { FaLeaf, FaUtensils, FaCheckCircle, FaFlask, FaWhatsapp, FaMapMarkerAlt, FaClock } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import image from '../assets/Gemini_Generated_Image_mg5165mg5165mg51.png'
-import image2 from '../assets/Gemini_Generated_Image_a56kbta56kbta56k.png'
-import image3 from '../assets/Gemini_Generated_Image_kkhtwlkkhtwlkkht.png'
+import any from '../assets/any (1).png'
+import any1 from '../assets/any (2).png'
+import any2 from '../assets/any (3).png'
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -52,51 +52,77 @@ function About() {
         <div className='bg-white text-gray-900'>
 
             {/* ── HERO ── */}
-            <div className='relative min-h-[420px] bg-gradient-to-br from-[#1a3a1a] via-[#2d5a2d] to-[#0f3020] flex items-center px-8 sm:px-16 py-20 overflow-hidden'>
-                <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(249,115,22,0.15),transparent_60%)]' />
+            <div className='relative min-h-[420px] bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] flex items-center px-8 sm:px-16 py-20 overflow-hidden'>
+                {/* Blue accent glow to replace the orange one */}
+                <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(59,130,246,0.15),transparent_60%)]' />
+
                 <motion.div className='relative z-10 max-w-2xl' variants={fadeUp} initial='hidden' animate='visible'>
                     <span className='inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/85 text-xs font-semibold px-4 py-1.5 rounded-full mb-5'>
-                        {t('about.heroBadge')}
+                        {t('about.heroBadge') || 'Premium Home Appliances'}
                     </span>
+
                     <h1 className='text-white font-bold leading-tight mb-4' style={{ fontFamily: 'Playfair Display,serif', fontSize: 'clamp(2rem,5vw,3.4rem)' }}>
-                        The Authenticity of Milk:<br />A Journey from the{' '}
-                        <span className='text-orange-400'>Farm</span><br />to Your Table
+                        Quality You Can <span className='text-blue-400'>Trust</span>:<br />
+                        Smart Solutions for<br /> Your Modern Home
                     </h1>
+
                     <p className='text-white/65 text-sm leading-relaxed mb-8 max-w-lg'>
-                        In Rawda, nature and flavor meet. We never compromise on quality — milked fresh every morning and processed without any chemical additives.
+                        Discover a curated selection of high-performance electronics at Al-Hamed Center. Located in Al-Rawda, we provide the finest appliances with certified quality and expert support.
                     </p>
+
                     <div className='flex gap-4 flex-wrap'>
                         <button onClick={() => navigate('/products')}
-                            className='bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-xl transition-all hover:-translate-y-1'>
+                            className='bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-all hover:-translate-y-1'>
                             Explore Products
                         </button>
                         <button className='border border-white/40 hover:border-white text-white font-semibold px-8 py-3 rounded-xl transition-all'>
-                            Learn More
+                            Our Services
                         </button>
                     </div>
                 </motion.div>
             </div>
 
             {/* ── PLACE STORY ── */}
+            {/* ── PLACE STORY (AL-HAMED CENTER) ── */}
             <div className='py-20 px-8 sm:px-16 bg-white'>
                 <div className='text-center mb-14'>
-                    <h2 className='text-3xl sm:text-4xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>{t('storyTitle')}</h2>
-                    <div className='w-12 h-1 bg-orange-500 rounded-full mx-auto mt-3' />
+                    <h2 className='text-3xl sm:text-4xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>
+                        {t('storyTitle') || 'Our Legacy'}
+                    </h2>
+                    <div className='w-12 h-1 bg-blue-600 rounded-full mx-auto mt-3' />
                 </div>
+
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-16 items-center max-w-5xl mx-auto'>
-                    <motion.div className='h-72 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-green-700 to-green-400 flex items-center justify-center text-6xl'
-                        initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: .7 }}>
-                        <img src={image} alt="Al-Rawda" className='w-full h-full object-cover' />
+                    {/* Visual Placeholder for the Center/Showroom */}
+                    <motion.div
+                        className='h-72 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-slate-800 to-blue-900 flex items-center justify-center text-6xl'
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: .7 }}
+                    >
+                        <span className='opacity-20 grayscale'>🏘️</span>
+                        <img src={any} alt="Al-Hamed Center Showroom" className='w-full h-full object-cover' />
                     </motion.div>
-                    <motion.div className='flex flex-col gap-4'
-                        initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: .7, delay: .15 }}>
-                        <span className='text-orange-500 text-xs font-bold tracking-widest'>{t('whyRawda')}</span>
-                        <h3 className='text-3xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>{t('rawdaTitle')}</h3>
+
+                    <motion.div
+                        className='flex flex-col gap-4'
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: .7, delay: .15 }}
+                    >
+                        <span className='text-blue-600 text-xs font-bold tracking-widest uppercase'>
+                            {t('whyAlRawda') || 'Established in Al-Rawda'}
+                        </span>
+                        <h3 className='text-3xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>
+                            {t('centerTitle') || 'A Tradition of Reliability'}
+                        </h3>
                         <p className='text-gray-500 text-sm leading-relaxed'>
-                            The Al-Rawda region of Damietta is famous for its rich soil, abundant water, and ideal climate — the perfect environment for raising the healthiest cows and producing the finest milk.
+                            {t('centerDesc') || 'Al-Hamed Center has been a cornerstone of the Al-Rawda community for years. We specialize in providing the latest home technologies - from advanced refrigeration systems to high-efficiency laundry solutions - for Damietta families.'}
                         </p>
-                        <span className='inline-flex items-center gap-2 bg-orange-50 border border-orange-200 text-orange-700 text-xs font-semibold px-4 py-2 rounded-lg w-fit'>
-                            🌿 Ideal environment for the finest milk production
+                        <span className='inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold px-4 py-2 rounded-lg w-fit'>
+                            {t('centerBadge') || 'Al-Rawda’s Go-To Appliance Hub'}
                         </span>
                     </motion.div>
                 </div>
@@ -106,7 +132,7 @@ function About() {
             <div className='py-20 px-8 sm:px-16 bg-gray-50'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-16 items-center max-w-5xl mx-auto'>
                     <div className='h-72 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-amber-100 to-amber-300 flex items-center justify-center text-6xl'>
-                        <img src={image3} alt="Quality" className='w-full h-full object-cover' />
+                        <img src={any1} alt="Quality" className='w-full h-full object-cover' />
                     </div>
                     <div className='flex flex-col gap-5'>
                         <h3 className='text-3xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>{t('committedToQuality')}</h3>
@@ -131,7 +157,7 @@ function About() {
             <div className='py-20 px-8 sm:px-16 bg-[#0f1e35]'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-16 items-center max-w-5xl mx-auto'>
                     <div className='relative h-80 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1a2a4a] to-[#2a4a7a] flex items-center justify-center text-7xl'>
-                        <img src={image2} alt="Processing" className='w-full h-full object-cover' />
+                        <img src={any2} alt="Processing" className='w-full h-full object-cover' />
                         <div className='absolute bottom-4 left-4 bg-white rounded-xl px-4 py-2 flex items-center gap-2'>
                             <span className='text-orange-500 font-black text-xl' style={{ fontFamily: 'Playfair Display,serif' }}>0%</span>
                             <span className='text-xs font-semibold text-gray-700'>Preservatives</span>
@@ -188,7 +214,7 @@ function About() {
                         <span className='text-orange-500 text-xs font-bold tracking-widest mb-2 block'>{t('getInTouch')}</span>
                         <h2 className='text-3xl sm:text-4xl font-bold mb-4' style={{ fontFamily: 'Playfair Display,serif' }}>{t('sendMessage')}</h2>
                         <p className='text-gray-500 text-sm leading-relaxed mb-6 max-w-md'>
-                            Have a question or feedback? Fill out the form and we will get back to you right away on WhatsApp.
+                            {t('contactDesc') || 'Have questions or need assistance? Send us a message and our team will get back to you as soon as possible.'}
                         </p>
                         <div className='flex items-center gap-3 bg-green-50 border border-green-200 rounded-xl px-5 py-4 w-fit'>
                             <div className='w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center'>
@@ -227,7 +253,7 @@ function About() {
                         </div>
                         <button type='submit'
                             className='bg-[#0f1e35] hover:bg-[#1a3a5c] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-all hover:-translate-y-1 flex items-center gap-2'>
-                            <FaWhatsapp size={16} /> Send Message
+                            <FaWhatsapp size={16} /> {t('sendMessage') || 'Send Message'}
                         </button>
                     </motion.form>
                 </div>
@@ -237,10 +263,10 @@ function About() {
             <div className='py-20 px-8 sm:px-16 bg-white'>
                 <div className='max-w-5xl mx-auto'>
                     <div className='text-center mb-12'>
-                        <span className='text-orange-500 text-xs font-bold tracking-widest mb-2 block'>VISIT US</span>
-                        <h2 className='text-3xl sm:text-4xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>Our Location in Al-Rawda</h2>
+                        <span className='text-orange-500 text-xs font-bold tracking-widest mb-2 block'>{t('visitUs')}</span>
+                        <h2 className='text-3xl sm:text-4xl font-bold' style={{ fontFamily: 'Playfair Display,serif' }}>{t('ourLocation')}</h2>
                         <div className='w-12 h-1 bg-orange-500 rounded-full mx-auto mt-3' />
-                        <p className='text-gray-500 text-sm mt-4'>Visit our primary dairy farm and production center in the heart of Damietta.</p>
+                        <p className='text-gray-500 text-sm mt-4'>{t('locationDesc')}</p>
                     </div>
 
                     <motion.div
@@ -252,7 +278,7 @@ function About() {
                     >
                         <iframe
                             title="Al-Labban Location"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13627.56821217646!2d31.7645!3d31.2586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f9e31505d9e5d1%3A0xc1b9649931b26466!2sAr%20Rawdah%2C%20Markaz%20Faraskur%2C%20Damietta%20Governorate!5e0!3m2!1sen!2seg!4v1714123456789!5m2!1sen!2seg"
+                            src="https://maps.google.com/maps?q=31.3244,31.7638&z=15&output=embed"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
@@ -265,11 +291,13 @@ function About() {
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8'>
                         <div className='bg-gray-50 p-6 rounded-2xl flex items-center gap-4'>
                             <div className='w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600'>
-                                <FaMapMarkerAlt size={20} />
+                                <a href="https://maps.google.com/maps?q=31.3244,31.7638&z=15&output=embed" target="_blank" rel="noopener noreferrer">
+                                    <FaMapMarkerAlt size={20} />
+                                </a>
                             </div>
                             <div>
-                                <p className='font-bold text-sm'>Address</p>
-                                <p className='text-xs text-gray-500'>Main Road, Al-Rawda, Damietta, Egypt</p>
+                                <p className='font-bold text-sm'>{t('address')}</p>
+                                <p className='text-xs text-gray-500'>{t('addressValue')}</p>
                             </div>
                         </div>
                         <div className='bg-gray-50 p-6 rounded-2xl flex items-center gap-4'>
@@ -277,8 +305,8 @@ function About() {
                                 <FaClock size={20} />
                             </div>
                             <div>
-                                <p className='font-bold text-sm'>Working Hours</p>
-                                <p className='text-xs text-gray-500'>Sat - Thu: 06:00 AM - 10:00 PM</p>
+                                <p className='font-bold text-sm'>{t('workingHours')}</p>
+                                <p className='text-xs text-gray-500'>Sat - Thu: 06:00 AM - 12:00 PM</p>
                             </div>
                         </div>
                     </div>

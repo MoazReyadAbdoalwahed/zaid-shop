@@ -30,8 +30,8 @@ function Contact() {
   ]
 
   const socials = [
-    { icon: <FaFacebook size={16} />, href: 'https://www.facebook.com/share/1DtkVppLtB/?mibextid=wwXIfr' },
-    { icon: <FaWhatsapp size={16} />, href: 'https://wa.me/201095592832' },
+    { icon: <FaFacebook size={16} />, href: 'https://www.facebook.com/share/1AqPNHSWQV/' },
+    { icon: <FaWhatsapp size={16} />, href: 'https://wa.me/01015774016' },
     { icon: <FaInstagram size={16} />, href: '#' },
   ]
 
@@ -45,7 +45,7 @@ function Contact() {
             {t('contactHeader')}
           </h1>
           <p className='text-gray-500 text-sm leading-relaxed max-w-md mx-auto'>
-            We're here to serve you. Share your inquiries or visit our farm in Al-Rawda to experience fresh Al-Labban dairy products directly from the source.
+            {t('contactSubheader')}
           </p>
         </motion.div>
       </div>
@@ -133,9 +133,9 @@ function Contact() {
           {/* IMAGE CARD */}
           <motion.div className='rounded-2xl overflow-hidden h-40 relative bg-gradient-to-br from-amber-300 to-orange-400 flex items-center justify-center text-5xl'
             variants={fadeUp} initial='hidden' whileInView='visible' viewport={{ once: true }} transition={{ delay: .2 }}>
-            🥛
+
             <div className='absolute bottom-3 right-3 bg-black/50 text-white text-xs font-semibold px-3 py-1 rounded-lg'>
-              100% Natural · From Our Farm
+
             </div>
           </motion.div>
         </div>
@@ -152,7 +152,7 @@ function Contact() {
         >
           <iframe
             title="Al-Labban Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13627.56821217646!2d31.7645!3d31.2586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f9e31505d9e5d1%3A0xc1b9649931b26466!2sAr%20Rawdah%2C%20Markaz%20Faraskur%2C%20Damietta%20Governorate!5e0!3m2!1sen!2seg!4v1714123456789!5m2!1sen!2seg"
+            src="https://maps.google.com/maps?q=31.3244,31.7638&z=15&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -178,7 +178,7 @@ function Contact() {
           </div>
           <span className='text-xs font-bold text-black'>Table</span>
 
-          <span className='text-xs font-bold text-black ml-auto'>🥛 Fresh in under 24 hours</span>
+          <span className='text-xs font-bold text-black ml-auto'> under 24 hours</span>
 
         </div>
       </div>

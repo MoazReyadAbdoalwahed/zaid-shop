@@ -1,7 +1,7 @@
 // src/components/eCommerce/FarmToTable.tsx
 import { motion } from 'framer-motion'
 import { FaCheckCircle, FaTruck, FaUtensils } from 'react-icons/fa'
-import FarmImg from '../../assets/Gemini_Generated_Image_a56kbta56kbta56k.png'
+import why from '../../assets/why.png'
 import { useTranslation } from 'react-i18next'
 const features = [
     { icon: <FaCheckCircle />, textKey: 'healthMonitoring' },
@@ -22,7 +22,7 @@ function FarmToTable() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
                 >
-                    <img src={FarmImg} alt="Farm" className='w-full h-full object-cover' />
+                    <img src={why} alt="Farm" className='w-full h-full object-cover' />
                 </motion.div>
 
                 {/* Content */}

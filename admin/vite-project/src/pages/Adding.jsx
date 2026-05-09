@@ -113,20 +113,20 @@ const Adding = ({ token }) => {
                 <div className='flex-1 min-w-[120px]'>
                     <p className='mb-2 font-medium'>{t('category')}</p>
                     <select {...register("category")} className='w-full px-3 py-2 border border-gray-300 rounded'>
-                        <option value="Cheese">{t('cheese')}</option>
-                        <option value="Yogurt">{t('yogurt')}</option>
-                        <option value="Butter">{t('butter')}</option>
-                        <option value="Cream">{t('cream')}</option>
+                        <option value="refrigerators">{t('refrigerators')}</option>
+                        <option value="washers">{t('washers')}</option>
+                        <option value="stoves">{t('stoves')}</option>
+                        <option value="fans">{t('fans')}</option>
+                        <option value="ac">{t('ac')}</option>
+                        <option value="heaters">{t('heaters')}</option>
                     </select>
                 </div>
                 <div className='flex-1 min-w-[120px]'>
                     <p className='mb-2 font-medium'>{t('subCategory')}</p>
                     <select {...register("subCategory")} className='w-full px-3 py-2 border border-gray-300 rounded'>
-                        <option value="Fresh">{t('fresh')}</option>
-                        <option value="Aged">{t('aged')}</option>
-                        <option value="Smoked">{t('smoked')}</option>
-                        <option value="Organic">{t('organic')}</option>
-                        <option value="Pickled">{t('pickled')}</option>
+                        <option value="new">{t('new')}</option>
+                        <option value="used">{t('used')}</option>
+                        <option value="refurbished">{t('refurbished')}</option>
                     </select>
                 </div>
                 <div className='min-w-[100px]'>

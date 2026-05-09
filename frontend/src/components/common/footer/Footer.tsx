@@ -68,12 +68,12 @@ function Footer() {
                         <div className='flex flex-col gap-3'>
                             <div className='flex items-center gap-3 text-gray-500 text-sm'>
                                 <FaPhone className='text-orange-500' size={14} />
-                                <a href='tel:01065689196'>01065689196</a>
+                                <a href='tel:01015774016'>01015774016</a>
                             </div>
                             <div className='flex items-center gap-3 text-gray-500 text-sm'>
                                 <MdEmail className='text-orange-500' size={16} />
-                                <a href='mailto:jdnejssikemd@gmail.com' className='hover:text-orange-600 transition-colors'>
-                                    jdnejssikemd@gmail.com
+                                <a href='mailto:abdoalwahedmoz@gmail.com' className='hover:text-orange-600 transition-colors'>
+                                    abdoalwahedmoz@gmail.com
                                 </a>
                             </div>
                             <div className='flex items-center gap-3 text-gray-500 text-sm'>
@@ -81,12 +81,12 @@ function Footer() {
                                 <span>ALRODA,Damietta, Egypt</span>
                             </div>
                             <div className='flex gap-3 mt-2'>
-                                <a href="https://www.facebook.com/share/1DtkVppLtB/?mibextid=wwXIfr"
+                                <a href="https://www.facebook.com/share/1AqPNHSWQV/"
                                     target="_blank" rel="noopener"
                                     className='w-10 h-10 rounded-full bg-gray-100 hover:bg-orange-500 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300'>
                                     <FaFacebook size={16} />
                                 </a>
-                                <a href="https://wa.me/201095592832"
+                                <a href="https://wa.me/01015774016"
                                     target="_blank" rel="noopener"
                                     className='w-10 h-10 rounded-full bg-gray-100 hover:bg-orange-500 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300'>
                                     <FaWhatsapp size={16} />

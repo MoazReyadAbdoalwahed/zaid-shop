@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { FetchSingleProduct } from '../store/product.tsx/thunk/thunkGetProducts';
 import FetchProducts from '../store/product.tsx/thunk/thunkGetProducts';
 import FetchCart from '../store/cart/thunk/ThunkGetCart';
@@ -25,20 +25,57 @@ function ProductPage() {
     const product = selectedProduct;
     const isAdded = product ? String(product.id) in cartItems : false;
 
+    const [selectedImage, setSelectedImage] = useState<string>('')
+
+    // Build images array from all available image fields
+    // Backend currently returns only `img` and full `image` array.
+    const productImages = useMemo(() => {
+        if (!product) return []
+
+        // Prefer backend array: `image: string[]`
+        const fromBackend = (product as unknown as { image?: unknown }).image
+
+        const imgArray = Array.isArray(fromBackend) ? fromBackend.filter(Boolean) : []
+
+        // Fallback to any extra fields (if they ever exist)
+        const extras = [
+            (product as { image2?: string; image3?: string; image4?: string }).image2,
+            (product as { image2?: string; image3?: string; image4?: string }).image3,
+            (product as { image2?: string; image3?: string; image4?: string }).image4,
+        ].filter(Boolean) as string[]
+
+
+        const primary = product.img ? [product.img] : []
+
+        // de-dupe while preserving order
+        return [...primary, ...imgArray, ...extras].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i)
+    }, [product])
+
+
+    // Set initial selected image when product loads
+    useEffect(() => {
+        const updateImage = async () => {
+            // You can now use 'await' here if needed
+            if (product?.img) {
+                setSelectedImage(product.img);
+            }
+        };
+
+        updateImage();
+    }, [product]);
+
     useEffect(() => {
         if (id) {
             dispatch(FetchSingleProduct(id));
         }
     }, [dispatch, id]);
 
-    // Fetch all products if not already loaded (for related products)
     useEffect(() => {
         if (!items || items.length === 0) {
             dispatch(FetchProducts(''))
         }
     }, [dispatch, items])
 
-    // Related products: same category, exclude current product, max 4
     const relatedProducts = useMemo(() => {
         if (!product || !Array.isArray(items)) return []
         return items
@@ -53,12 +90,10 @@ function ProductPage() {
     function addtocartfun(id: string) {
         dispatch(addToCart(id))
         if (token) {
-            // Wait for API to complete, then fetch cart
             dispatch(addToCartAPI({ productId: id, quantity: 1 })).then(() => {
                 dispatch(FetchCart())
             });
         } else {
-            // If not logged in, just fetch local cart items
             dispatch(FetchCart())
         }
     }
@@ -96,19 +131,54 @@ function ProductPage() {
                             transition={{ duration: 0.5 }}
                             className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto"
                         >
-                            {/* Image */}
-                            <div className="relative h-96 md:h-125 overflow-hidden rounded-2xl bg-gray-100 flex items-center justify-center">
-                                {product.img ? (
-                                    <FallbackImg
-                                        src={product.img}
-                                        alt={product.title || 'Product'}
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <div className="text-center text-gray-400">
-                                        <p>{t('noImage', 'No image available')}</p>
+                            {/* Image Gallery */}
+                            <div className="flex gap-3">
+
+                                {/* Thumbnails — only show if more than 1 image */}
+                                {productImages.length > 1 && (
+                                    <div className="flex flex-col gap-2">
+                                        {productImages.map((img, index) => (
+                                            <div
+                                                key={index}
+                                                onClick={() => setSelectedImage(img)}
+                                                className={`w-16 h-16 rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-200 flex-shrink-0 ${selectedImage === img
+                                                    ? 'border-orange-500'
+                                                    : 'border-gray-200 hover:border-gray-400'
+                                                    }`}
+                                            >
+                                                <FallbackImg
+                                                    src={img}
+                                                    alt={`${product.title} ${index + 1}`}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                        ))}
                                     </div>
                                 )}
+
+                                {/* Main Image */}
+                                <div className="relative flex-1 h-96 md:h-125 overflow-hidden rounded-2xl bg-gray-100">
+                                    {selectedImage ? (
+                                        <motion.div
+                                            key={selectedImage}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="w-full h-full"
+                                        >
+                                            <FallbackImg
+                                                src={selectedImage}
+                                                alt={product.title || 'Product'}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </motion.div>
+                                    ) : (
+                                        <div className="text-center text-gray-400 flex items-center justify-center h-full">
+                                            <p>{t('noImage', 'No image available')}</p>
+                                        </div>
+                                    )}
+                                </div>
+
                             </div>
 
                             {/* Details */}

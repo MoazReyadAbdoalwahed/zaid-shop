@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import Logo from "../../../assets/logo.jpeg"
+// import Logo from "../../../assets/logo.jpeg"
 import { FaUser, FaShoppingCart, FaBars, FaArrowLeft, FaArrowRight, FaSun, FaMoon } from 'react-icons/fa';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks'
 import { getTotalQuantity } from '../../../store/cart/selectors/Selectors'
@@ -79,7 +79,10 @@ function Navbar() {
             <header className={`navbar-header ${showHeader && !visible ? 'header-visible' : 'header-hidden'}`}>
                 <div className="flex justify-between items-center text-sm py-4 px-2 sm:px-5">
                     <Link to="/" className="shrink-0">
-                        <img src={Logo} alt="logo" className="h-12 sm:h-16 w-auto" />
+                        {/* <img src={Logo} alt="logo" className="h-12 sm:h-16 w-auto" /> */}
+                        <h1 className="text-xl lg:text-2xl font-bold tracking-tighter text-gray-800">
+                            zaid<span className="text-pink-400 text-2xl lg:text-3xl ml-0.5">.</span>
+                        </h1>
                     </Link>
 
                     <ul className="hidden sm:flex gap-2 sm:gap-5 text-gray-700">

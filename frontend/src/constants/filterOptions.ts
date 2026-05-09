@@ -1,14 +1,14 @@
 export const categories = [
-    { value: 'Cheese', labelKey: 'cheese', emoji: '🧀' },
-    { value: 'Yogurt', labelKey: 'yogurt', emoji: '🥛' },
-    { value: 'Butter', labelKey: 'butter', emoji: '🧈' },
-    { value: 'Cream', labelKey: 'cream', emoji: '🍦' },
-]
+    { value: 'Refrigerators', labelKey: 'refrigerators', emoji: '❄️' }, // ثلاجات
+    { value: 'Washing Machines', labelKey: 'washers', emoji: '🧼' },     // غسالات
+    { value: 'Cookers', labelKey: 'stoves', emoji: '👨‍🍳' },            // بوتاجازات
+    { value: 'Air Conditioners', labelKey: 'ac', emoji: '🌬️' },       // تكييفات
+    { value: 'Fans', labelKey: 'fans', emoji: '🌀' },                  // مراوح
+    { value: 'Heaters', labelKey: 'heaters', emoji: '♨️' },            // سخانات
+];
 
 export const subCategories = [
-    { value: 'Fresh', labelKey: 'fresh', emoji: '🌿' },
-    { value: 'Aged', labelKey: 'aged', emoji: '🏺' },
-    { value: 'Smoked', labelKey: 'smoked', emoji: '🔥' },
-    { value: 'Organic', labelKey: 'organic', emoji: '♻️' },
-    { value: 'Pickled', labelKey: 'pickled', emoji: '🫙' },
-]
+    { value: 'New', labelKey: 'new', emoji: '✨' },                // جديد
+    { value: 'Certified Used', labelKey: 'used', emoji: '🤝' },    // مستعمل معتمد
+    { value: 'Refurbished', labelKey: 'refurbished', emoji: '🛠️' }, // مجدد
+];

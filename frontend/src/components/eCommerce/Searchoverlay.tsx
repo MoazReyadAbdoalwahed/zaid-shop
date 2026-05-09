@@ -38,7 +38,7 @@ function SearchOverlay({ searchOpen, searchQuery, onClose, onQueryChange }: Sear
 
     return (
         <div
-            className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out ${searchOpen
+            className={`fixed inset-x-0 top-0 z-1100 transition-all duration-300 ease-in-out ${searchOpen
                 ? 'translate-y-0 opacity-100 pointer-events-auto'
                 : '-translate-y-full opacity-0 pointer-events-none'
                 }`}

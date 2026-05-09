@@ -77,13 +77,14 @@
     "confirmDelete": "هل أنت متأكد من رغبتك في حذف هذا؟",
     "yes": "نعم",
     "no": "لا",
-    "cheese": "جبن",
-    "yogurt": "زبادي",
-    "butter": "زبدة",
-    "cream": "قشطة",
-    "fresh": "طازج",
-    "aged": "مُعتَّق",
-    "smoked": "مدخن",
-    "organic": "عضوي",
-    "pickled": "مخلل"
+    "refrigerators": "ثلاجات",
+    "washers": "غسالات",
+    "stoves": "بوتاجازات",
+    "fans": "مراوح",
+    "condition": "الحالة",
+    "new": "جديد",
+    "used": "مستعمل معتمد",
+    "refurbished": "مجدد",
+    "ac": "تكييفات",
+    "heaters": "سخانات"
 }
